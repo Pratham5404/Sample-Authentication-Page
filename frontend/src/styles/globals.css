@@ -1,0 +1,377 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   DekNek3D — Global Styles
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ─── CSS Custom Properties ──────────────────────────────────────────── */
+:root {
+  --dk-dark: #001a2e;
+  --dk-dark-2: #0d2b45;
+  --dk-dark-3: #0a1f35;
+  --dk-accent: #4da6ff;
+  --dk-cyan: #00ffff;
+  --dk-magenta: #ff006e;
+  --dk-text: #ffffff;
+  --dk-text-2: #b3d9ff;
+  --dk-text-3: #6b93b8;
+  --dk-glass: rgba(13, 43, 69, 0.45);
+  --dk-glass-border: rgba(77, 166, 255, 0.15);
+  --dk-glass-hover: rgba(13, 43, 69, 0.6);
+  --dk-radius: 16px;
+  --dk-radius-sm: 10px;
+  --dk-radius-xs: 6px;
+  --dk-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --dk-shadow-glow: 0 0 30px rgba(0, 255, 255, 0.1);
+  --dk-transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --dk-font: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* ─── Reset ──────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--dk-font);
+  background: var(--dk-dark);
+  color: var(--dk-text);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: var(--dk-cyan);
+  text-decoration: none;
+  transition: color var(--dk-transition);
+}
+a:hover {
+  color: var(--dk-accent);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--dk-font);
+  border: none;
+  outline: none;
+  background: none;
+  color: inherit;
+}
+
+input,
+textarea {
+  font-family: var(--dk-font);
+  border: none;
+  outline: none;
+  background: none;
+  color: var(--dk-text);
+}
+
+/* ─── Selection ───────────────────────────────────────────────────── */
+::selection {
+  background: rgba(0, 255, 255, 0.25);
+  color: var(--dk-text);
+}
+
+/* ─── Scrollbar ───────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--dk-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(77, 166, 255, 0.3);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 255, 255, 0.5);
+}
+
+/* ─── App Loader ──────────────────────────────────────────────────── */
+.app-loader {
+  position: fixed;
+  inset: 0;
+  background: var(--dk-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.loader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.loader-spinner {
+  width: 48px;
+  height: 48px;
+  border: 3px solid rgba(0, 255, 255, 0.15);
+  border-top-color: var(--dk-cyan);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.loader-text {
+  color: var(--dk-text-2);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  animation: pulseText 1.5s ease-in-out infinite;
+}
+
+/* ─── Keyframes ───────────────────────────────────────────────────── */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulseText {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 255, 255, 0.1); }
+  50% { box-shadow: 0 0 40px rgba(0, 255, 255, 0.2); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes orb1 {
+  0%   { transform: translate(0, 0) scale(1); }
+  33%  { transform: translate(30px, -40px) scale(1.1); }
+  66%  { transform: translate(-20px, 20px) scale(0.95); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes orb2 {
+  0%   { transform: translate(0, 0) scale(1); }
+  33%  { transform: translate(-40px, 30px) scale(1.05); }
+  66%  { transform: translate(25px, -25px) scale(0.9); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes orb3 {
+  0%   { transform: translate(0, 0) scale(1); }
+  33%  { transform: translate(20px, 30px) scale(1.08); }
+  66%  { transform: translate(-30px, -15px) scale(0.92); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes ringPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.2;
+  }
+}
+
+/* ─── 404 Not Found Page ──────────────────────────────────────────── */
+.notfound-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: var(--dk-dark);
+}
+
+.notfound-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.notfound-bg .bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.3;
+}
+.notfound-bg .orb-1 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, var(--dk-cyan), transparent 70%);
+  top: 10%;
+  right: 15%;
+  animation: orb1 12s ease-in-out infinite;
+}
+.notfound-bg .orb-2 {
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, var(--dk-magenta), transparent 70%);
+  bottom: 15%;
+  left: 10%;
+  animation: orb2 10s ease-in-out infinite;
+}
+
+.notfound-content {
+  text-align: center;
+  z-index: 1;
+  animation: fadeInUp 0.6s ease-out;
+  padding: 2rem;
+}
+
+.notfound-code {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.notfound-code .four {
+  font-size: clamp(5rem, 15vw, 10rem);
+  font-weight: 800;
+  color: transparent;
+  background: linear-gradient(135deg, var(--dk-cyan), var(--dk-accent));
+  background-clip: text;
+  -webkit-background-clip: text;
+  line-height: 1;
+}
+
+.zero-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.zero-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 3px solid var(--dk-cyan);
+  border-radius: 50%;
+  animation: ringPulse 2s ease-in-out infinite;
+}
+
+.zero {
+  font-size: clamp(5rem, 15vw, 10rem);
+  font-weight: 800;
+  color: transparent;
+  background: linear-gradient(135deg, var(--dk-magenta), var(--dk-accent));
+  background-clip: text;
+  -webkit-background-clip: text;
+  line-height: 1;
+}
+
+.notfound-content h1 {
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.notfound-content p {
+  color: var(--dk-text-2);
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  max-width: 400px;
+  margin-inline: auto;
+}
+
+.notfound-links {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.nf-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: var(--dk-radius-sm);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all var(--dk-transition);
+}
+
+.nf-link.primary {
+  background: linear-gradient(135deg, var(--dk-cyan), var(--dk-accent));
+  color: var(--dk-dark);
+}
+.nf-link.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 255, 255, 0.3);
+  color: var(--dk-dark);
+}
+
+.nf-link.secondary {
+  background: var(--dk-glass);
+  border: 1px solid var(--dk-glass-border);
+  color: var(--dk-text);
+}
+.nf-link.secondary:hover {
+  background: var(--dk-glass-hover);
+  transform: translateY(-2px);
+  color: var(--dk-cyan);
+}
+
+/* ─── Utility Classes ─────────────────────────────────────────────── */
+.capitalize {
+  text-transform: capitalize;
+}
+
+.spinner-small {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  margin-right: 6px;
+}
